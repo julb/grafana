@@ -63,6 +63,7 @@ func (m *OrgRoleMapper) MapOrgRoles(
 ) map[int64]org.RoleType {
 	if len(mappingCfg.orgMapping) == 0 {
 		// Org mapping is not configured
+		m.logger.Debug("Org Mapping is not configured")
 		return m.getDefaultOrgMapping(mappingCfg.strictRoleMapping, directlyMappedRole)
 	}
 
@@ -74,6 +75,7 @@ func (m *OrgRoleMapper) MapOrgRoles(
 	}
 
 	if len(userOrgRoles) == 0 {
+		m.logger.Debug("No user org roles")
 		return m.getDefaultOrgMapping(mappingCfg.strictRoleMapping, directlyMappedRole)
 	}
 
